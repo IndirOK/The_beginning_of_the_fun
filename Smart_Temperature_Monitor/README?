@@ -1,0 +1,2 @@
+A great starting point for microcontrollers (after the LEDs and buttons) is the sensors. They are very important in most engineering projects as they input datas that come from our environment. 
+To begin my adventure, I chose to use a temperature sensor that will permit me to read my room's temperature. 
