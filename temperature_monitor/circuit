@@ -1,1 +1,9 @@
-
+MATERIALS 
+Physical version
+- Board (Arduino or Elegoo)
+- DHT11 (temperature sensor)
+- Breadboard
+- Resistor (10k Ohms)
+Online version
+- TinkerCad  
+- Instead of the DHT11, it's the TMP36 since TinkerCad doesn't have it.
