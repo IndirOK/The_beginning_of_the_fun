@@ -1,4 +1,5 @@
 MATERIALS : 
+
 FOR THE ONLINE_CIRCUIT (in TinkerCad): 
 - 1 TMP36
 - 1 Arduino Board
@@ -8,6 +9,7 @@ Connections :
 2) Connect the alimentation pin of the TMP36 to the 5V of the Adruino 
 3) Connect the gound pin of the TMP36 to the ground pin of the Arduino 
 4) Connect the output tension of the TMP36 to the A0 (or any other analog pin) of the Arduino
+
 Source : https://bc-robotics.com/tutorials/using-a-tmp36-temperature-sensor-with-arduino/?srsltid=AfmBOopjzVlyGL8eqAWfAqI5LI2ZBR-qxCdXudqxl80-VI92XSLyxFDi
 
 FOR THE PHYSICAL_CIRCUIT : 
@@ -19,3 +21,5 @@ Connections :
 2) Connect the signal pin of the DHT11 to the digital pin 4 (or any other digital pin) of the Adruino 
 3) Connect the gound pin of the DHT11 to the ground pin of the Arduino 
 4) Connect the vcc of the DHT11 to the 5V of the Arduino
+
+Source : https://www.aranacorp.com/en/temperature-and-humidity-measurement-with-sensor-dht11/
