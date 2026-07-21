@@ -38,5 +38,3 @@ void loop() {
   Serial.print(hif);
   Serial.println(F("°F"));
 }
-
-Source : https://learn.adafruit.com/dht?view=all
