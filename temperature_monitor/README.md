@@ -31,7 +31,9 @@ Physical circuit :
 The DHT11 is a temperature and humidity sensor that has 3 or 4 pins, depending on the model. The model I used has 3 pins : one for alimentation, one for the signal and one for the ground. Practically all the connections are the same as the TMP36, but instead of connecting the signal pin to an analog pin, the DHT11 is connected to a digital pin, because it outputs digital data instead of analog signals. 
 
 IV/ Code explanation 
+
 Online's code : 
+
 Physical's code : 
 
 V/ Interpretation of the results 
