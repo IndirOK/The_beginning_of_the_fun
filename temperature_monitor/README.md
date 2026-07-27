@@ -32,7 +32,7 @@ The DHT11 is a temperature and humidity sensor that has 3 or 4 pins, depending o
 
 IV/ Code explanation 
 
-Online's code : 
+TMP36 code : 
 
 Variables : 
 
@@ -80,7 +80,68 @@ Serial.println(temp); (line 19)
 
 We want to see the results on our serial monitor, and in order to do that, we need to use the "Serial.print()" function. It works just like the function "print()" for python. 
 
-Physical's code : 
+DHT11 code : 
+
+Concerning the DHT11's code, it is first needed to install two special libraries. In the Sketch menu, go in Include library and in Manage libraries. In there, we need to find first "DHT Sensor library" made by Adafruit. After installing it, we install the second library, which is the "Adafruit Unified Sensor". After that, you can either use the code inside my "physical code" section or go in Example, DHT and DHTtester. In the code, you have to uncomment the line that defines the DHT11 and comment the line that defines the DHT22. Now, let's get to the code. 
+
+#include "DHT.h" (line 1)
+
+#define DHTPIN 2  (line 3)
+
+#define DHTTYPE DHT11   // DHT 11 (line 4)
+
+DHT dht(DHTPIN, DHTTYPE); (line 5)
+
+In those lines, we first in line 1 load the first library we installed in our Arduino IDE since it contains all the functions that we are going to use. Then in line 3, we define the pin that connects the DHT11 to the Arduino to be the digital pin 2. After that, in line 4, we define the sensor type to be DHT11, as in the library, there is both for the DHT11 and for the DHT22. Finally, in line 5, create a sensor object, which is like a remote control for the sensor, to set as the pin DHTPIN and the type of sensor DHTTYPE. 
+
+Void setup
+
+  Serial.begin(9600); (line 8)
+  
+  Serial.println(F("DHTxx test!")); (line 9)
+
+  dht.begin(); (line 11) 
+
+In the void setup, we want to set up just like in the TMP36 code, we gotta set up the Serial.begin to 9600. Then we display "DHTxx test!" in order to mark the beginning of the test. And, the line dht.begin wake up the sensor and prepare it to sense it's environnment. 
+
+Void lopp
+
+delay(2000); (line 15) 
+Makes a delay of 2 seconds since the DHT11 is a pretty slow sensor that gives new data every 1-2 seconds. 
+
+float h = dht.readHumidity(); (line 17)
+
+float t = dht.readTemperature(); (line 18)
+
+In those lines, it simply reads the humidity and the temperature of the room in Celsius. 
+
+if (isnan(h) || isnan(t) { (line 20)
+
+  Serial.println(F("Failed to read from DHT sensor!")); (line 21)
+  
+  return; (line 22) 
+
+This brick of code checks if any of the results (the humidity and temperature) is a number. If it isn't, then it is considered an error and displays in the Serial Monitor "Failed to read from DHT sensor!". 
+
+float hic = dht.computeHeatIndex(t, h, false); (line 26) 
+
+These lines of codes gets the Heat Index of the room. The bigger the humidity, the hotter it feels like in an environment. 
+
+Serial.print(F("Humidity: ")); (line 28)
+
+  Serial.print(h);(line 29)
+  
+  Serial.print(F("%  Temperature: "));(line 30)
+  
+  Serial.print(t);(line 31)
+  
+  Serial.print(F("°C "));(line 32)
+  
+  Serial.print(hic);(line 33)
+  
+  Serial.print(F("°C "));(line 34)
+
+This displays all the informations that have been collected by the sensor. The temperature, the humidity and the heat index.  
 
 V/ Interpretation of the results 
 
