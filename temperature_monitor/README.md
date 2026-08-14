@@ -143,12 +143,17 @@ Serial.print(F("Humidity: ")); (line 28)
 
 This displays all the informations that have been collected by the sensor. The temperature, the humidity and the heat index.  
 
-V/ Interpretation of the results 
+V/ Interpretation of the results (need to put my sensor in different conditions, but find new sensor first because other one broken) 
 
 VI/ Learning and improvements 
 
+In this project, I learnt about concepts such as sensors, AnalogWriting and AnalogReading, what Analog and Digital really are, how to use temperature sensors in different ways and how to use libraries for the first time in my life. I want to improve my project by comparing the results of both circuits to understand furthermore the differences between them, which will be possible when I get the materials for the online circuit, and by adding other variables to study such as pressure or light, in order to transform this project from temperature monitoring to weather conditions monitoring. 
+
 VII/ Sources
 
+In order to do this project, I had to do some researches around the Internet, which made me stumble into these two articles that I recommend any beginner to use in order to start using temperature sensors. 
+
 For the online and physical codes and circuits : 
+
 https://bc-robotics.com/tutorials/using-a-tmp36-temperature-sensor-with-arduino/?srsltid=AfmBOopjzVlyGL8eqAWfAqI5LI2ZBR-qxCdXudqxl80-VI92XSLyxFDi
 https://learn.adafruit.com/dht?view=all
