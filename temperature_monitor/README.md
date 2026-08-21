@@ -7,7 +7,7 @@ I thought it would be an easy task as the first sensor I use, but it was quite t
 has been a both interesting and fascinating experience. The challenging understanding of the code and the divine taste
 of finally underestanding what I am doing made me fall deeply in love with the concepts of microelectronics. I first built it simply to understand the concepts, but 
 I then understood that a flame has appeared, one that makes me want to develop that project, and that gives this project a deeper meaning : to be the beginning of 
-the usage of sensors, the starting point. 
+the usage of sensors, the starting point. It is important to precise that the coding process of the physical circuit, (the DHT11 one), has mostly been importing code from the Adafruit library but instead of only copying and pasting it and calling it a day, I tried my best to understand the code by explaining it in my own words. 
 
 II/ Materials 
 
