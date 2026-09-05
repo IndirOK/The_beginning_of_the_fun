@@ -115,7 +115,7 @@ float t = dht.readTemperature(); (line 18)
 
 In those lines, it simply reads the humidity and the temperature of the room in Celsius. 
 
-if (isnan(h) || isnan(t) { (line 20)
+if (isnan(h) || isnan(t)) { (line 20)
 
   Serial.println(F("Failed to read from DHT sensor!")); (line 21)
   
