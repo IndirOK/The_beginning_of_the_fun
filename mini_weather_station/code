@@ -1,1 +1,116 @@
+#include <Wire.h>
+#include "MS5837.h"
+#include "DHT.h"
+
+#define DHTPIN 2  
+#define DHTTYPE DHT11   // DHT 11
+#include <Wire.h>
+#include <Digital_Light_TSL2561.h>
+DHT dht(DHTPIN, DHTTYPE);
+
+MS5837 sensor;
+
+void setup() {
+  
+  Serial.begin(9600);
+  
+  Serial.println("Starting");
+  
+  Wire.begin();
+
+  dht.begin();
+
+  TSL2561.init();
+
+
+  // Initialize pressure sensor
+  // Returns true if initialization was successful
+  // We can't continue with the rest of the program unless we can initialize the sensor
+  while (!sensor.init()){
+    Serial.println("Init failed!");
+    Serial.println("Are SDA/SCL connected correctly?");
+    Serial.println("Blue Robotics Bar30: White=SDA, Green=SCL");
+    Serial.println("\n\n\n");
+    delay(5000);
+  }
+  
+  sensor.setModel(MS5837::MS5837_30BA);
+  sensor.setFluidDensity(997); // kg/m^3 (freshwater, 1029 for seawater)
+}
+
+void loop() {
+  // Update pressure and temperature readings
+  sensor.read();
+
+  Serial.print("Pressure: "); 
+  Serial.print(sensor.pressure()); 
+  Serial.println(" mbar");
+  
+  Serial.print("Temperature: "); 
+  Serial.print(sensor.temperature()); 
+  Serial.println(" deg C");
+  
+  Serial.print("Depth: "); 
+  Serial.print(sensor.depth()); 
+  Serial.println(" m");
+  
+  Serial.print("Altitude: "); 
+  Serial.print(sensor.altitude()); 
+  Serial.println(" m above mean sea level");
+
+  delay(1000);
+
+  delay(2000);
+
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  float f = dht.readTemperature(true);
+
+  if (isnan(h)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+
+  float hif = dht.computeHeatIndex(f, h);
+  float hic = dht.computeHeatIndex(t, h, false);
+
+  Serial.print(F("Humidity: "));
+  Serial.print(h);
+  Serial.print(F("°F  Heat index: "));
+  Serial.print(hic);
+  Serial.print(F("°C "));
+
+  float light = (TSL2561.readVisibleLux());
+    delay(1000);
+  if (light <= 0.0001){
+    Serial.print("Overcast night");
+  }
+  else if (light > 0.0001 && light <= 0.0011){
+    Serial.print("Starlight");
+  }
+  else if (light > 0.0011 && light <= 0.0108){
+    Serial.print("Quarter Moon");
+  }
+  else if (light > 0.0108 && light <= 0.108){
+    Serial.print("Full Moon");
+  }
+  else if (light > 0.108 && light <= 1.08){
+    Serial.print("Deep Twilight");
+  }
+  else if (light > 1.08 && light <= 10.75){
+    Serial.print("Twilight");
+  }
+  else if (light > 10.75 && light <= 107.53){
+    Serial.print("Very dark day")
+  }
+  else if (light > 107.53 && light <= 1075.30){
+    Serial.print("Overcast Day")
+  }
+  else if (light > 1075.30 && light <= 10752.70){
+    Serial.print("Daylight")
+  }
+  else if (light > 10752.70 && light <= 107527){
+    Serial.print("Sunlight")
+  }
+}
 
